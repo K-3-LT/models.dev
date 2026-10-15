@@ -4,7 +4,15 @@
 # https://iteracompute.com/models/qwen3-8-27b/ (retail USD/MTok prices, context, and vision)
 # Effort wire path: reasoning_effort = none|low|medium|xhigh; reasoning.effort is also accepted.
 # reasoning_effort = none disables thinking; do not add a separate toggle.
-# Free accounts start at 32K context; recharge tiers unlock 128K and 256K. Maximum output is 8,192.
+# Free accounts start at 128K context; the Pro recharge tier unlocks 256K. Maximum output is 8,192.
+# Host capability recheck (2026-10-15), exact record id = "qwen/qwen3.8-27b":
+# /v1/models data[id].reasoning: mandatory=false, supports_enable_disable=true,
+# supported_efforts=["low","medium","xhigh"] (graded levels; off is a separate alias).
+# Provider request-mapping check: reasoning_effort="none" and reasoning.effort="none"
+# both forward enable_thinking=false for this exact ID (local adapter check, not live inference).
+# https://iteracompute.com/models/qwen3-8-27b/: Free=128K, Starter=128K, Pro=256K.
+# All three tiers remain $0/token; recharge unlocks allowances/context, not token-price bands.
+# This entry publishes the default Free context, so no paid [[cost.tiers]] apply.
 base_model = "alibaba/qwen3.8-27b"
 reasoning_options = [{ type = "effort", values = ["none", "low", "medium", "xhigh"] }]
 
@@ -14,7 +22,7 @@ output = 0
 cache_read = 0
 
 [limit]
-context = 32_768
+context = 131_072
 output = 8_192
 
 [modalities]

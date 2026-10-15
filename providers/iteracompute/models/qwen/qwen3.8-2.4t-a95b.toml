@@ -4,6 +4,13 @@
 # https://iteracompute.com/models/qwen3-8-2-4t-a95b/ (retail USD/MTok prices, context, and vision)
 # Effort wire path: reasoning_effort = none|low|medium|xhigh; reasoning.effort is also accepted.
 # reasoning_effort = none disables thinking; do not add a separate toggle.
+# Host capability recheck (2026-10-15), exact record id = "qwen/qwen3.8-2.4t-a95b":
+# /v1/models data[id].reasoning: mandatory=false, supports_enable_disable=true,
+# supported_efforts=["low","medium","xhigh"] (graded levels; off is a separate alias).
+# Provider request-mapping check: reasoning_effort="none" and reasoning.effort="none"
+# both forward enable_thinking=false for this exact ID (local adapter check, not live inference).
+# /openrouter/v1/models data[id].input_modalities contains {type="image"};
+# image input is an explicit host override, not inherited from the text-only lab entry.
 base_model = "alibaba/qwen3.8-2.4t-a95b"
 attachment = true
 reasoning_options = [{ type = "effort", values = ["none", "low", "medium", "xhigh"] }]
