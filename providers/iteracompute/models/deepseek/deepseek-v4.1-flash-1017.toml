@@ -1,0 +1,27 @@
+# Sources (accessed 2026-10-22):
+# https://api.iteracompute.com/v1/models (served ID, retail USD/MTok prices, limits and reasoning)
+# https://iteracompute.com/models/deepseek-v4-1-flash-1017/ (host capabilities and pricing)
+# Toggle wire path: thinking.type = enabled|disabled; effort wire path: reasoning_effort = low|high|max.
+# Control baseline: providers/deepseek/models/deepseek-v4-flash.toml, which serves the 1017 update.
+# https://api-docs.deepseek.com/guides/thinking_mode documents these native chat controls.
+schema = 2
+base_model = "deepseek/deepseek-v4.1-flash-1017"
+
+[modalities]
+input = ["text"]
+output = ["text"]
+
+[capabilities]
+reasoning = { supported = true, toggle = true, effort = ["low", "high", "max"] }
+structured_output = true
+
+[limit]
+context = 1_048_576
+output = 393_216
+
+[cost.text.input]
+price = 0.17
+cache = { read = 0.005 }
+
+[cost.text.output]
+price = 0.7
