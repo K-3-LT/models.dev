@@ -16,9 +16,6 @@ reasoning = { supported = true }
 structured_output = true
 temperature = true
 
-[limit]
-output = 262_144
-
 [cost.text.input]
 price = 0.69
 cache = { read = 0.15 }
