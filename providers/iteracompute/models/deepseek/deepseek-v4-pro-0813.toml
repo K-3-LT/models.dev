@@ -9,6 +9,9 @@
 # /v1/models data[id].reasoning: mandatory=true, supports_enable_disable=false,
 # supported_efforts=["low","high","max"]. This host exposes effort and rejects reasoning off.
 # Prices updated 2026-10-21 from the public GET https://api.iteracompute.com/v1/models pricing object (USD per 1M tokens).
+# Exact /v1/models record (2026-10-23), id="deepseek/deepseek-v4-pro-0813":
+# pricing.currency="USD", unit="per_1m_tokens", cache_write="0" (an explicit zero, not null/missing).
+# The host model page also prints Cache Write $0; keep write=0 for this published free-write rate.
 schema = 2
 base_model = "deepseek/deepseek-v4-pro-0813"
 
