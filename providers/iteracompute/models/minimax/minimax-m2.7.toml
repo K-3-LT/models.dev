@@ -3,6 +3,8 @@
 # https://iteracompute.com/models/minimax-m2-7/ (host capabilities and pricing)
 # MiniMax M2.x thinking is always on; thinking.type=disabled is ignored.
 # No-control baseline: providers/minimax for the same model; https://platform.minimax.io/docs/api-reference/text-anthropic-api.
+# Exact host record (2026-10-23), /v1/models data[].id="minimax/minimax-m2.7": max_output_tokens=16384.
+# This is the published host cap; the lab's larger generation ceiling is not the host serving limit.
 schema = 2
 base_model = "minimax/MiniMax-M2.7"
 

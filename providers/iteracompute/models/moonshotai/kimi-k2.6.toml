@@ -3,6 +3,8 @@
 # https://iteracompute.com/models/kimi-k2-6/ (host capabilities and pricing)
 # Toggle wire path: thinking.type = enabled|disabled.
 # Control baseline: providers/moonshotai and providers/openrouter for Kimi K2.6.
+# Exact host record (2026-10-23), /v1/models data[].id="moonshotai/kimi-k2.6": max_output_tokens=16384.
+# This is the published host cap; the lab's larger generation ceiling is not the host serving limit.
 schema = 2
 base_model = "moonshotai/kimi-k2.6"
 

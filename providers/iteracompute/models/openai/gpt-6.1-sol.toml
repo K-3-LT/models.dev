@@ -7,6 +7,9 @@
 # reasoning.mandatory=true, supports_enable_disable=false,
 # supported_efforts=["low","medium","high","xhigh"].
 # This host does not advertise "max"; no additional native effort level is inferred.
+# Model-page mapping (2026-10-23): full context=1_050_000; Gateway input=922_000; output=128_000.
+# /v1/models context_window=922000 matches the page's input budget, not its full model context.
+# Inherit the lab's combined window and distinct input/output ceilings.
 schema = 2
 base_model = "openai/gpt-6.1-sol"
 
@@ -17,9 +20,6 @@ output = ["text"]
 [capabilities]
 reasoning = { supported = true, effort = ["low", "medium", "high", "xhigh"] }
 structured_output = true
-
-[limit]
-context = 922_000
 
 [cost.text.input]
 price = 1.6

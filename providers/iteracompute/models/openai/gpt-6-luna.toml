@@ -1,12 +1,15 @@
 # Sources (accessed 2026-10-22):
 # https://api.iteracompute.com/v1/models (served ID, retail USD/MTok prices, limits and reasoning)
 # https://iteracompute.com/models/gpt-6-luna/ (host capabilities and pricing)
-# Toggle wire path: reasoning = true|false; reasoning.enabled = true|false is also accepted.
-# Effort wire path: reasoning_effort = low|medium|high|xhigh; reasoning.effort is also accepted.
+# Effort wire path: reasoning_effort = none|low|medium|high|xhigh; none disables reasoning.
 # Host capability recheck (2026-10-23), exact /v1/models data[].id = "openai/gpt-6-luna":
 # reasoning.mandatory=false, supports_enable_disable=true,
 # supported_efforts=["low","medium","high","xhigh"].
-# Off is the separate boolean reasoning control; "none" and "max" are not advertised efforts on this host.
+# The host page records a successful Chat Completions tool cycle using reasoning_effort=none (2026-10-21).
+# Treat that documented off alias as effort=none; no separate toggle and no unadvertised max level.
+# Model-page mapping (2026-10-23): full context=1_050_000; Gateway input=922_000; output=128_000.
+# /v1/models context_window=922000 matches the page's input budget, not its full model context.
+# Inherit the lab's combined window and distinct input/output ceilings.
 schema = 2
 base_model = "openai/gpt-6-luna"
 
@@ -15,11 +18,8 @@ input = ["text", "image/jpeg", "image/png", "image/gif", "image/webp"]
 output = ["text"]
 
 [capabilities]
-reasoning = { supported = true, toggle = true, effort = ["low", "medium", "high", "xhigh"] }
+reasoning = { supported = true, effort = ["none", "low", "medium", "high", "xhigh"] }
 structured_output = true
-
-[limit]
-context = 922_000
 
 [cost.text.input]
 price = 0.08
