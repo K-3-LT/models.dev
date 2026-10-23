@@ -3,6 +3,10 @@
 # https://iteracompute.com/models/gpt-6-1-sol/ (host capabilities and pricing)
 # Effort wire path: reasoning_effort = low|medium|high|xhigh; reasoning.effort is also accepted.
 # The host advertises mandatory reasoning and no enable/disable control.
+# Host capability recheck (2026-10-23), exact /v1/models data[].id = "openai/gpt-6.1-sol":
+# reasoning.mandatory=true, supports_enable_disable=false,
+# supported_efforts=["low","medium","high","xhigh"].
+# This host does not advertise "max"; no additional native effort level is inferred.
 schema = 2
 base_model = "openai/gpt-6.1-sol"
 

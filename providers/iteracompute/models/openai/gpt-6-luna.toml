@@ -3,6 +3,10 @@
 # https://iteracompute.com/models/gpt-6-luna/ (host capabilities and pricing)
 # Toggle wire path: reasoning = true|false; reasoning.enabled = true|false is also accepted.
 # Effort wire path: reasoning_effort = low|medium|high|xhigh; reasoning.effort is also accepted.
+# Host capability recheck (2026-10-23), exact /v1/models data[].id = "openai/gpt-6-luna":
+# reasoning.mandatory=false, supports_enable_disable=true,
+# supported_efforts=["low","medium","high","xhigh"].
+# Off is the separate boolean reasoning control; "none" and "max" are not advertised efforts on this host.
 schema = 2
 base_model = "openai/gpt-6-luna"
 

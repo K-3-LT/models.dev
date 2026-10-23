@@ -2,6 +2,10 @@
 # https://api.iteracompute.com/v1/models (served ID, retail USD/MTok prices, limits and reasoning)
 # https://iteracompute.com/models/qwen3-8-flash/ (host capabilities and pricing)
 # Toggle wire path: enable_thinking = true|false, documented on the host model page.
+# Effort wire path: reasoning_effort = low|medium|xhigh.
+# Effort baseline: providers/alibaba/models/qwen3.8-flash.toml and this host's qwen3.8-27b entry.
+# Host recheck (2026-10-23): this exact ID has no reasoning extension in /v1/models.
+# The host model page documents the toggle but publishes no thinking_budget parameter; no budget is authored.
 schema = 2
 base_model = "alibaba/qwen3.8-flash"
 
@@ -10,7 +14,7 @@ input = ["text", "image/bmp", "image/jpeg", "image/png", "image/tiff", "image/we
 output = ["text"]
 
 [capabilities]
-reasoning = { supported = true, toggle = true }
+reasoning = { supported = true, toggle = true, effort = ["low", "medium", "xhigh"] }
 structured_output = true
 
 [limit]
